@@ -9,21 +9,21 @@ The intention of this project is to combine my passion for house plants and my p
 
 ### Web Interface
 - [x] Complete Node.js tutorial at: https://nextjs.org/learn/basics/styling-components.
-- [] Create main page with temperature, humidity, fan, light, most recent image.
-- [] Display README on about page.
-- [] Get data from database for statistics history.
+- [ ] Create main page with temperature, humidity, fan, light, most recent image.
+- [ ] Display README on about page.
+- [ ] Get data from database for statistics history.
 
 ### Greenhouse Automation
-- [] Temperature.
-- [] Gumidity.
-- [] Toggle fan.
-- [] Toggle light.
-- [] Get regular (daily?) image.
+- [ ] Temperature.
+- [ ] Gumidity.
+- [ ] Toggle fan.
+- [ ] Toggle light.
+- [ ] Get regular (daily?) image.
 
 ### Database Backend
-- [] Determine length of time between readings.
-- [] Create table(s).
-- [] Determine lifespan of data and automatically remove old data.
+- [ ] Determine length of time between readings.
+- [ ] Create table(s).
+- [ ] Determine lifespan of data and automatically remove old data.
 
 
 
