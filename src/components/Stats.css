@@ -1,0 +1,24 @@
+
+.stats-container {
+  background-color: #181c24;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 100px 10vh;
+  width: 150px;
+
+}
+
+.single-stat {
+  padding-top: 5px;
+  font-size: 14px;
+  border-bottom: #314F35 1px solid;
+  border-right: #314F35 1px solid;
+  width: 100%;
+}
+
+.single-stat p {
+  padding-left: 10px;
+  color: #3D5A5D;
+}
+

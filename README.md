@@ -15,7 +15,7 @@ The intention of this project is to combine my passion for house plants and my p
 
 ### Greenhouse Automation
 - [ ] Temperature.
-- [ ] Gumidity.
+- [ ] Humidity.
 - [ ] Toggle fan.
 - [ ] Toggle light.
 - [ ] Get regular (daily?) image.
