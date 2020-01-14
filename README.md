@@ -22,7 +22,10 @@ The intention of this project is to combine my passion for house plants and my p
     - [ ] reads from database
     - [ ] display image from date
 - [ ] Display README on about page.
-- [ ] Get data from database for statistics history.
+- [ ] Build api to access PostgreSQL database.
+  - [ ] tutorials:
+    - [ ] https://medium.com/@olinations/build-a-crud-template-using-react-bootstrap-express-postgres-9f84cc444438
+    - [ ] https://blog.logrocket.com/setting-up-a-restful-api-with-node-js-and-postgresql-d96d6fc892d8/
 
 ### Greenhouse Automation
 - [ ] Temperature.
