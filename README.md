@@ -47,6 +47,8 @@ The intention of this project is to combine my passion for house plants and my p
 - [ ] Create table(s).
 - [ ] Determine lifespan of data and automatically remove old data.
 
+### Build
+- [ ] write makefile
 
 
 
