@@ -45,8 +45,14 @@ sel() {
     exit 1
 }
 
+## prints help message
 print_help() {
-    printf "\'$1\' is not a valid option. Valid options:\n  \'\'\t\t\tstarts database container, creates table and users, adds rows for number in first parameter (or 10 if no first parameter)\n  start\t\t\tstarts database container, creates tables and users\n  simulate or sim\tadds rows for number in first parameter (or 10 if no first parameter)\n  select or sel\t\tdisplays current containts of pi_greenhouse_stastics\n  stop\t\t\tkills container\n"
+    if ! [[ $COMMAND == "help" ]] 
+    then
+        printf "\'$COMMAND\' is not a valid option. "
+    fi
+
+    printf "Valid options:\n  \'\'\t\t\tstarts database container, creates table and users, adds rows for number in first parameter (or 10 if no first parameter)\n  start\t\t\tstarts database container, creates tables and users\n  simulate or sim\tadds rows for number in first parameter (or 10 if no first parameter)\n  select or sel\t\tdisplays current containts of pi_greenhouse_stastics\n  stop\t\t\tkills container\n  help\t\t\tprints this message\n"
     exit 1
 }
 

@@ -10,15 +10,23 @@ The intention of this project is to combine my passion for house plants and my p
 ### Web Interface
 - [ ] Create main page with:
   - [ ] Temperature
+    - [x] componenet
+    - [x] build api
     - [ ] reads from database
     - [ ] click to display history graph
   - [ ] Humidity
+    - [x] componenet
+    - [x] build api
     - [ ] reads from database
     - [ ] click to display history graph
   - [ ] Fan
+    - [x] componenet
+    - [ ] build api
     - [ ] reads from database
     - [ ] click to display history graph
   - [ ] Most recent image.
+    - [ ] componenet
+    - [ ] build api
     - [ ] reads from database
     - [ ] display image from date
 - [ ] Display README on about page.
@@ -51,7 +59,6 @@ The intention of this project is to combine my passion for house plants and my p
 - [ ] Determine lifespan of data and automatically remove old data.
 
 ### Build
+- [x] Write database initialize script
 - [ ] write makefile
-
-
 
