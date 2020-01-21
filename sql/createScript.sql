@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS pi_greenhouse_statistics (
   entry_id serial PRIMARY KEY,
   temperature FLOAT NOT NULL,
   humidity FLOAT NOT NULL,
+  fan_power INT NOT NULL,
   time_stamp TIMESTAMP NOT NULL
 );
 
