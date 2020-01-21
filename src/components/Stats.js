@@ -1,12 +1,43 @@
 import React from 'react';
 import './Stats.css';
 
-const Temp = () => {
-  return (
-    <div className='single-stat'>
-      <p>Temperature: 69</p>
-    </div>
-  );
+//import API from './DatabaseAPI.js';
+
+
+
+class Temp extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      currentTemp: -459.67,
+    };
+  };
+
+  componentDidMount() {
+    fetch('/Temp')
+    .then(results => {
+        return results.json();
+      }).then(data => {
+        let currentTemp = data.results.map((temp) => {
+        return(
+          <div key={temp.results}>
+            <p> temp.temperature </p>
+          </div>
+        );
+      });
+      this.setState({currentTemp: currentTemp})
+      console.log("state", this.state.currentTemp);
+    });
+      
+  };
+
+  render() {
+    return (
+      <div className='single-stat'>
+        <p>Temperature: {this.state.currentTemp}{'\u00B0'}F</p>
+      </div>
+    );
+  };
 }; 
 
 const Humidity = () => {
@@ -26,6 +57,9 @@ const Fan = () => {
 }; 
 
 class Stats extends React.Component {
+  constructor() {
+    super();
+  };
 
   render() {
     return <div className='stats-container'>
@@ -33,7 +67,7 @@ class Stats extends React.Component {
       <Humidity />
       <Fan />
     </div>
-  }
+  };
 }
 
 export default Stats;

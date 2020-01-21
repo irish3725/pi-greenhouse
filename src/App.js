@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './clover.png';
 import './App.css';
 
 import NavBar from './components/NavBar';
