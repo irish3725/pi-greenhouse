@@ -18,7 +18,7 @@ class Temp extends React.Component {
     .then(results => {
         return results.json();
       }).then(data => {
-        let currentTemp = data.results.map((temp) => {
+        let currentTemp = data.map((temp) => {
         return(
           <div key={temp.results}>
             <p> temp.temperature </p>
