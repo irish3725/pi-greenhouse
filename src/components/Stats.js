@@ -1,10 +1,6 @@
 import React from 'react';
 import './Stats.css';
 
-//import API from './DatabaseAPI.js';
-
-
-
 class Temp extends React.Component {
   constructor() {
     super();
@@ -14,53 +10,81 @@ class Temp extends React.Component {
   };
 
   componentDidMount() {
-    fetch('/Temp')
-    .then(results => {
-        return results.json();
-      }).then(data => {
-        let currentTemp = data.map((temp) => {
-        return(
-          <div key={temp.results}>
-            <p> temp.temperature </p>
-          </div>
-        );
+      fetch("http://localhost:5000/temperature", {
+        credentials: 'same-origin',
+      })
+      .then(res => res.json())
+      .then(res => res[0].temperature) // set res to temperature in first row (query only returns one row)
+      .then(res => this.setState({currentTemp: res })) // set state to temperature
+      .catch(function(error) {
+        console.log('error: \n', error);
       });
-      this.setState({currentTemp: currentTemp})
-      console.log("state", this.state.currentTemp);
-    });
-      
   };
 
   render() {
     return (
       <div className='single-stat'>
-        <p>Temperature: {this.state.currentTemp}{'\u00B0'}F</p>
+        <p>Temperature: {this.state.currentTemp} {'\u00B0'}F</p>
       </div>
     );
   };
 }; 
 
-const Humidity = () => {
-  return (
-    <div className='single-stat'>
-      <p>Humidity: 72%</p>
-    </div>
-  );
-}; 
+class Humidity extends React.Component {
+  constructor() {
+    super();
+    this.state = {currentHumidity: -1};
+  };
 
-const Fan = () => {
-  return (
-    <div className='single-stat'>
-      <p>Fan on</p>
-    </div>
-  );
+  componentDidMount() {
+      fetch("http://localhost:5000/Humidity", {
+        credentials: 'same-origin',
+      })
+      .then(res => res.json())
+      .then(res => res[0].humidity) // set res to temperature in first row (query only returns one row)
+      .then(res => this.setState({currentHumidity: res })) // set state to temperature
+      .catch(function(error) {
+        console.log('error: \n', error);
+      });
+  };
+
+  render() {
+    return (
+      <div className='single-stat'>
+        <p>Humidity: {this.state.currentHumidity} %</p>
+      </div>
+    );
+  };
+};
+
+class Fan extends React.Component {
+  constructor() {
+    super();
+    this.state = {currentFanPower: -1};
+  }
+
+  componentDidMount() {
+      fetch("http://localhost:5000/fan_power", {
+        credentials: 'same-origin',
+      })
+      .then(res => res.json())
+      .then(res => res[0].fan_power) // set res to temperature in first row (query only returns one row)
+      .then(res => this.setState({currentFanPower: res })) // set state to temperature
+      .catch(function(error) {
+        console.log('error: \n', error);
+      });
+  };
+
+  render() {
+    return (
+      <div className='single-stat'>
+        <p>Fan Power: {this.state.currentFanPower} %</p>
+      </div>
+    );
+  };
 }; 
 
 class Stats extends React.Component {
-  constructor() {
-    super();
-  };
-
   render() {
     return <div className='stats-container'>
       <Temp />
