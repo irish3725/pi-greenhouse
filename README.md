@@ -3,29 +3,44 @@
 
 pi-greenhouse is raspberry pi controlled greenhouse with a webpage front end to display the current conditions as well as a history of the conditions in the greenhouse. 
 
+The history is stored on a containerized PostegreSQL database which is connect to the front end through a Node.js api.
+
 The intention of this project is to combine my passion for house plants and my passion for software development. I get to gain experience with automation, web development, database management, and plant propogation at the same time.
 
 ## Current Progress
 
 ### Web Interface
-- [ ] Create main page with:
-  - [ ] Temperature
-    - [ ] reads from database
+- [ ] Create main page.
+  - [ ] Temperature.
+    - [x] componenet
+    - [x] reads from database
     - [ ] click to display history graph
-  - [ ] Humidity
-    - [ ] reads from database
+  - [ ] Humidity.
+    - [x] componenet
+    - [x] reads from database
     - [ ] click to display history graph
-  - [ ] Fan
-    - [ ] reads from database
+  - [ ] Fan.
+    - [x] componenet
+    - [x] reads from database
     - [ ] click to display history graph
   - [ ] Most recent image.
+    - [ ] componenet
     - [ ] reads from database
     - [ ] display image from date
 - [ ] Display README on about page.
-- [ ] Build api to access PostgreSQL database.
-  - [ ] tutorials:
-    - [ ] https://medium.com/@olinations/build-a-crud-template-using-react-bootstrap-express-postgres-9f84cc444438
-    - [ ] https://blog.logrocket.com/setting-up-a-restful-api-with-node-js-and-postgresql-d96d6fc892d8/
+
+### Database Backend
+- [x] Create containerized database.
+- [x] Create table(s).
+- [ ] Determine length of time between readings.
+- [ ] Determine lifespan of data and automatically remove old data.
+- [ ] Write backup script.
+
+### Database API
+- [x] Temperature.
+- [x] Humidity.
+- [x] Fan.
+- [x] Attach to front-end.
 
 ### Greenhouse Automation
 - [ ] Temperature.
@@ -45,13 +60,7 @@ The intention of this project is to combine my passion for house plants and my p
   - [ ] install camera
   - [ ] write images to database
 
-### Database Backend
-- [ ] Determine length of time between readings.
-- [ ] Create table(s).
-- [ ] Determine lifespan of data and automatically remove old data.
-
 ### Build
-- [ ] write makefile
-
-
+- [x] Write database initialize script.
+- [ ] Write makefile.
 
