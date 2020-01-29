@@ -13,15 +13,15 @@ The intention of this project is to combine my passion for house plants and my p
 - [ ] Create main page.
   - [ ] Temperature.
     - [x] componenet
-    - [ ] reads from database
+    - [x] reads from database
     - [ ] click to display history graph
   - [ ] Humidity.
     - [x] componenet
-    - [ ] reads from database
+    - [x] reads from database
     - [ ] click to display history graph
   - [ ] Fan.
     - [x] componenet
-    - [ ] reads from database
+    - [x] reads from database
     - [ ] click to display history graph
   - [ ] Most recent image.
     - [ ] componenet
@@ -40,7 +40,7 @@ The intention of this project is to combine my passion for house plants and my p
 - [x] Temperature.
 - [x] Humidity.
 - [x] Fan.
-- [ ] Attach to front-end.
+- [x] Attach to front-end.
 
 ### Greenhouse Automation
 - [ ] Temperature.
