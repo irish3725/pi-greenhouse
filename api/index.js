@@ -22,6 +22,7 @@ app.get('/', (request, response) => {
 app.get('/temperature', db.getCurrentTemp);
 app.get('/humidity', db.getCurrentHumidity);
 app.get('/fan_power', db.getCurrentFanPower);
+app.get('/stats/:rows', db.getStats);
 
 app.listen(port, () => {
   console.log(`App running on port ${port}`);

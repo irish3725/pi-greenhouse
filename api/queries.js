@@ -34,9 +34,21 @@ const getCurrentFanPower = (request, response) => {
   });
 }
 
+const getStats = (request, response) => {
+  const rows = parseInt(request.params.rows);
+
+  pool.query('SELECT entry_id, temperature, humidity, fan_power, time_stamp FROM pi_greenhouse_statistics ORDER BY entry_id DESC LIMIT $1;', [rows], (error, results) => {
+    if (error) {
+      throw error;
+    };
+    response.status(200).json(results.rows);
+  });
+}
+
 module.exports = {
   getCurrentTemp,
   getCurrentHumidity,
   getCurrentFanPower,
+  getStats,
 }
 
