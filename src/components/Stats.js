@@ -108,12 +108,12 @@ class Stats extends React.Component {
   };
 
   render() {
-
+    // values read from json default to strings. parseFloat gets floats
     return <div className='stats-container'>
-      {console.log('Stat\'s state: ', this.state.stats)};
-      <Temp currentTemp = {this.state.stats.temperature}/>
-      <Humidity currentHumidity = {this.state.stats.humidity}/>
-      <Fan currentFanPower = {this.state.stats.fan_power}/>
+      {console.log('Stat\'s state: ', this.state.stats)}
+      <Temp currentTemp = {parseFloat(this.state.stats.temperature).toFixed(2)}/>
+      <Humidity currentHumidity = {parseFloat(this.state.stats.humidity).toFixed(2)}/>
+      <Fan currentFanPower = {parseFloat(this.state.stats.fan_power).toFixed()}/>
     </div>
   };
 }
