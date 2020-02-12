@@ -12,5 +12,5 @@ bash $DBINITSCRIPT 10
 cd $BINDIR/../api/ && npm start &
 
 ## start front-end
-cd $BINDIR/../ && npm start
+#cd $BINDIR/../ && npm start
 
