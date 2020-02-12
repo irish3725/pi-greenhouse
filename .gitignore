@@ -1,3 +1,4 @@
 backgrounds/
 node_modules/
 .database/
+build/

@@ -20,8 +20,6 @@ function formatNumber(num, precision) {
     numberOfDecimals = 0
   }
 
-  console.log('num: ', num, '\nprecision: ', precision, '\nnumberOfDecimals: ', numberOfDecimals);
-
   /* return number formatted to lowest of numberOfDecimals and inputted precision */
   return parseFloat(num).toFixed(Math.min(precision, numberOfDecimals))
 }
@@ -79,7 +77,6 @@ class Stats extends React.Component {
   render() {
     // values read from json default to strings. parseFloat gets floats
     return <div className='stats-container'>
-      {console.log('Stat\'s state: ', this.state.stats)}
       <Temp currentTemp = {formatNumber(this.state.stats.temperature, 2)}/>
       <Humidity currentHumidity = {formatNumber(this.state.stats.humidity, 2)}/>
       <Fan currentFanPower = {formatNumber(this.state.stats.fan_power, 0)}/>
