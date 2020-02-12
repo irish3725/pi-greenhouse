@@ -1,6 +1,31 @@
 import React from 'react';
 import './Stats.css';
 
+/* for formatting number outputs and ignoring strings */
+function formatNumber(num, precision) {
+
+  /* return string if it is not a number */
+  if(isNaN(num)) {
+    return num
+  }
+
+  num = parseFloat(num)
+  var numberOfDecimals;
+
+  if (Math.floor(num) !== num) {
+    /* count number of digits to the right of the decimal */
+    numberOfDecimals = num.toString().split(".")[1].length || 0 
+  } else {
+    /* if floor matches number, no digits right of decimal */
+    numberOfDecimals = 0
+  }
+
+  console.log('num: ', num, '\nprecision: ', precision, '\nnumberOfDecimals: ', numberOfDecimals);
+
+  /* return number formatted to lowest of numberOfDecimals and inputted precision */
+  return parseFloat(num).toFixed(Math.min(precision, numberOfDecimals))
+}
+
 class Temp extends React.Component {
   render() {
     return (
@@ -55,9 +80,9 @@ class Stats extends React.Component {
     // values read from json default to strings. parseFloat gets floats
     return <div className='stats-container'>
       {console.log('Stat\'s state: ', this.state.stats)}
-      <Temp currentTemp = {parseFloat(this.state.stats.temperature).toFixed(2)}/>
-      <Humidity currentHumidity = {parseFloat(this.state.stats.humidity).toFixed(2)}/>
-      <Fan currentFanPower = {parseFloat(this.state.stats.fan_power).toFixed()}/>
+      <Temp currentTemp = {formatNumber(this.state.stats.temperature, 2)}/>
+      <Humidity currentHumidity = {formatNumber(this.state.stats.humidity, 2)}/>
+      <Fan currentFanPower = {formatNumber(this.state.stats.fan_power, 0)}/>
     </div>
   };
 }
