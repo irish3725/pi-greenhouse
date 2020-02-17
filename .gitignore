@@ -1,3 +1,8 @@
-backgrounds/
+
+# react ignore
 node_modules/
-.database/
+
+# automation ignore
+automation/out/*
+*.out
+

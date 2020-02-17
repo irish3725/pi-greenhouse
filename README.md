@@ -3,13 +3,13 @@
 
 pi-greenhouse is raspberry pi controlled greenhouse with a webpage front end to display the current conditions as well as a history of the conditions in the greenhouse. 
 
-The history is stored on a containerized PostegreSQL database which is connect to the front end through a Node.js api.
+The frontend is built with React. The history is stored on a containerized PostegreSQL database which is connect to the front end through a Node.js api. The API between the database and the frontend is written with Node.js. The greenhouse automation and statistics collection is written in c++.
 
 The intention of this project is to combine my passion for house plants and my passion for software development. I get to gain experience with automation, web development, database management, and plant propogation at the same time.
 
 ## Current Progress
 
-### Web Interface
+### Frontend
 - [ ] Create main page.
   - [ ] Temperature.
     - [x] componenet
@@ -27,20 +27,26 @@ The intention of this project is to combine my passion for house plants and my p
     - [ ] componenet
     - [ ] reads from database
     - [ ] display image from date
+  - [ ] Graph displaying history
+    - [ ] create graph
+    - [ ] graph slides out on click
+    - [ ] add/remove lines on graph on click
+    - [ ] graph slides back to show older data
 - [ ] Display README on about page.
 
 ### Database Backend
 - [x] Create containerized database.
-- [x] Create table(s).
-- [ ] Determine length of time between readings.
-- [ ] Determine lifespan of data and automatically remove old data.
-- [ ] Write backup script.
+- [x] Design table(s).
+- [ ] Persistece.
+- [ ] Automate backups.
 
 ### Database API
-- [x] Temperature.
-- [x] Humidity.
-- [x] Fan.
-- [x] Attach to front-end.
+- [x] Frontend.
+  - [x] build API
+  - [x] attach to front-end
+- [ ] Backend.
+  - [ ] build API
+  - [ ] attach to automation back-end
 
 ### Greenhouse Automation
 - [ ] Temperature.
