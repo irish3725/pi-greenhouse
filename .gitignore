@@ -2,6 +2,9 @@
 # react ignore
 node_modules/
 
+# build ignore
+build/
+
 # automation ignore
 automation/out/*
 *.out
