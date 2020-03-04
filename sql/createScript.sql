@@ -28,3 +28,20 @@ BEGIN
   END IF;
 END $$;
 
+-- create user for database writing (writer)
+DO $$
+BEGIN
+  -- check for existance of writer
+  IF NOT EXISTS(SELECT FROM information_schema.enabled_roles WHERE role_name = 'writer') THEN
+    CREATE ROLE writer WITH LOGIN PASSWORD 'docker';
+    -- allow connect to database
+    GRANT CONNECT ON DATABASE postgres TO writer;
+    -- allow access to public schema
+    GRANT USAGE ON SCHEMA public TO writer;
+    -- allow writer to access and increment entry id sequences
+    GRANT USAGE, SELECT ON SEQUENCE pi_greenhouse_statistics_entry_id_seq TO writer;
+    -- allow select on pi_greenhouse_statistics
+    GRANT INSERT ON pi_greenhouse_statistics TO writer;
+  END IF;
+END $$;
+
