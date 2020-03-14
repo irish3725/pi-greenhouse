@@ -4,10 +4,13 @@ import threading
 
 import ui
 import database
+import readsensor
 
-WRITE_INTERVAL=40 # time interval for writing to database (10 minutes)
-READ_INTERVAL=10 # time interval for taking readings (10 minutes)
-TEMPTHRES=[65, 80] # range of ok temperatures
+WRITE_INTERVAL = 40 # time interval for writing to database (10 minutes)
+READ_INTERVAL = 10 # time interval for taking readings (10 minutes)
+OK_TEMPERATURES = [65, 80] # range of ok temperatures
+SIMULATE_READINGS = True
+
 
 class automation:
   
@@ -19,15 +22,14 @@ class automation:
     table = 'pi_greenhouse_statistics'
     last_write = time.time() - WRITE_INTERVAL
     
-    #temperature, humidity = read_sensors()
-    temperature, humidity = 10, 20
-
     while self.running:
-      # get reading
+
+      # get readings
+      temperature, humidity = readsensor.get_temperature_and_humidity(SIMULATE_READINGS)
       print('temperature:', temperature, 'humidity:', humidity)
 
-      if time.time() - last_write > WRITE_INTERVAL:
-        print('Writing to database temperature:', temperature, 'humidity:', humidity)
+      # if time to write to database, write (get_temperature_and_humidity will return None if no readings)
+      if time.time() - last_write > WRITE_INTERVAL and temperature and humidity:
         database.insert_stats(table, temperature, humidity)
         last_write = time.time()
 

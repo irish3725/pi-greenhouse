@@ -1,28 +1,32 @@
 import sys
-import Adafruit_DHT
+import random
 
-sensor_args = { '11': Adafruit_DHT.DHT11,
-                '22': Adafruit_DHT.DHT22,
-                '2302': Adafruit_DHT.AM2302 }
+PIN=4
 
-if len(sys.argv) == 3 and sys.argv[1] in sensor_args:
-    sensor = sensor_args[sys.argv[1]]
-    pin = sys.argv[2]
-# default will be DHT11 and pin 4
-elif len(sys.argv) == 1:
+def simulate_humidity_temperature():
+  # get humidity as float between 0 and 100
+  humidity = round(random.uniform(0, 100), 2)
+  # get temp as floatbetween 50 and 90
+  temperature = round(random.uniform(50, 90), 2)
+
+  return humidity, temperature
+
+def get_temperature_and_humidity(simulate=False):
+  
+  # read sensor
+  if simulate:
+    humidity, temperature = simulate_humidity_temperature()
+  else: 
+    import Adafruit_DHT
     sensor = Adafruit_DHT.DHT11
-    pin = 4
-else:
-    print('Usage: python Adafruit_DHT.py [11|22|2302] <GPIO pin number>')
-    print('Example: python Adafruit_DHT.py 11 4 - Read from an DHR11 connected to GPIO pin #4')
-    sys.exit(1)
+    humidity, temperature = Adafruit_DHT.read_retry(sensor, PIN)
 
-humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
+  # translate to ferenheit and return
+  if humidity is not None and temperature is not None:
+      temperature = (temperature * 9/5) + 32
+      #print('Temp={0:0.1f}*  Humidity={1:0.1f}%'.format(temperature, humidity))
+      return temperature,  humidity
 
-if humidity is not None and temperature is not None:
-    temperature = (temperature * 9/5) + 32
-    #print('Temp={0:0.1f}*  Humidity={1:0.1f}%'.format(temperature, humidity))
-    print(temperature,  humidity)
-else:
-    print('Failed to get reading. Try again!')
-    sys.exit(1)
+  # if no reading, return nothing
+  return None, None
+
