@@ -37,24 +37,24 @@ The intention of this project is to combine my passion for house plants and my p
 ### Database Backend
 - [x] Create containerized database.
 - [x] Design table(s).
-- [ ] Persistece.
+- [X] Persistece.
 - [ ] Automate backups.
 
 ### Database API
 - [x] Frontend.
   - [x] build API
   - [x] attach to front-end
-- [ ] Backend.
-  - [ ] build API
-  - [ ] attach to automation back-end
+- [X] Backend.
+  - [X] build API
+  - [X] attach to automation back-end
 
 ### Greenhouse Automation
-- [ ] Temperature.
-  - [ ] install sensor
-  - [ ] write temp to database
-- [ ] Humidity.
-  - [ ] install sensor
-  - [ ] write temp to database
+- [X] Temperature.
+  - [X] install sensor
+  - [X] write temp to database
+- [X] Humidity.
+  - [X] install sensor
+  - [X] write temp to database
 - [ ] Toggle fans.
   - [ ] install fans
   - [ ] toggle fan power based on temp
