@@ -9,22 +9,21 @@ def simulate_humidity_temperature():
   # get temp as floatbetween 50 and 90
   temperature = round(random.uniform(50, 90), 2)
 
-  return humidity, temperature
+  return temperature, humidity
 
 def get_temperature_and_humidity(simulate=False):
   
   # read sensor
   if simulate:
-    humidity, temperature = simulate_humidity_temperature()
+    return simulate_humidity_temperature()
   else: 
     import Adafruit_DHT
     sensor = Adafruit_DHT.DHT11
     humidity, temperature = Adafruit_DHT.read_retry(sensor, PIN)
 
-  # translate to ferenheit and return
   if humidity is not None and temperature is not None:
-      temperature = (temperature * 9/5) + 32
-      #print('Temp={0:0.1f}*  Humidity={1:0.1f}%'.format(temperature, humidity))
+      # translate to ferenheit and round to 2 decimals
+      temperature = round(((temperature * 9/5) + 32), 2)
       return temperature,  humidity
 
   # if no reading, return nothing

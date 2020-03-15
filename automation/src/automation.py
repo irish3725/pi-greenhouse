@@ -1,48 +1,58 @@
 
+# python libraries
 import time
 import threading
 
+# pi-greenhouse libraries
 import ui
 import database
 import readsensor
 
+# automation constants
 WRITE_INTERVAL = 40 # time interval for writing to database (10 minutes)
 READ_INTERVAL = 10 # time interval for taking readings (10 minutes)
 OK_TEMPERATURES = [65, 80] # range of ok temperatures
 SIMULATE_READINGS = True
 
+# database constants (to be replaced by config file)
+DB_NAME = 'greenhouse_statistics'
+USER = 'writer'
+HOST = 'localhost'
+PASSWORD = 'docker'
+TABLE = 'pi_greenhouse_statistics'
 
 class automation:
   
   def __init__(self, running=True):
     self.running = True
 
-  def run(self): 
+  # read database config file to prevent hardcoding database info
+  def get_database_info(self):
+    pass
 
-    table = 'pi_greenhouse_statistics'
+  def run(self): 
     last_write = time.time() - WRITE_INTERVAL
     
+    # loop while still running
     while self.running:
-
       # get readings
       temperature, humidity = readsensor.get_temperature_and_humidity(SIMULATE_READINGS)
       print('temperature:', temperature, 'humidity:', humidity)
 
       # if time to write to database, write (get_temperature_and_humidity will return None if no readings)
       if time.time() - last_write > WRITE_INTERVAL and temperature and humidity:
-        database.insert_stats(table, temperature, humidity)
+        # if database write fails, exit
+        if not database.insert_stats(DB_NAME, USER, HOST, PASSWORD, TABLE, temperature, humidity):
+          self.running = False
+          return
+          
+        # update time of last attempted write
         last_write = time.time()
 
+      # sleep for amount of time to wait between reads
       time.sleep(READ_INTERVAL)
 
     return
-
-  """
-
-    print('writing to database:')
-    write_statistics(database, temperature, humidity)
-  """
-
 
 if __name__ == '__main__':
 

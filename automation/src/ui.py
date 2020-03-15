@@ -13,7 +13,7 @@ class ui:
     # acceptable exit values
     exit_values = ['q', 'quit', 'e', 'exit']
 
-    while val not in exit_values and self.automation.running:
+    while self.automation.running == True and val not in exit_values and self.automation.running:
       val = input().lower()
 
     self.automation.running = False

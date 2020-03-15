@@ -9,6 +9,9 @@ CONTAINERNAME="greenhouse_statistics"
 PWD="adansonii"
 USER="monstera"
 DATABASE="postgres"
+VOLUMENAME="greenhouse_statistics"
+VOLUMELOCATION="/var/lib/docker/volumes/greenhouse_statistics/_data"
+VOLUMEDESTINATION="/var/lib/postgresql/data"
 CREATESCRIPT="$SQLPATH/createScript.sql"
 SIMULATESCRIPT="$SQLPATH/addRow.sql"
 
@@ -22,7 +25,7 @@ create_container() {
 
 ## starts database container
 start_container() {
-    docker run -d --rm --name $CONTAINERNAME -p 5432:5432 $CONTAINERNAME
+    docker run --rm --name $CONTAINERNAME -p 5432:5432 -v $VOLUMENAME:$VOLUMEDESTINATION -d $CONTAINERNAME
 }
 
 ## adds rows to initialized database
