@@ -29,6 +29,10 @@ start_container() {
     docker run --rm --name $CONTAINERNAME -p 5432:5432 -v $VOLUMENAME:$VOLUMEDESTINATION -d $CONTAINERNAME
 }
 
+init_database() {
+    PGPASSWORD=$PWD psql -h localhost -U $USER -d $DATABASE -q -f $CREATESCRIPT
+}
+
 ## adds rows to initialized database
 simulate() {
     [[ -z "$1" ]] && rows=10 || rows=$1
@@ -78,6 +82,8 @@ then
     create_container   
     # start container
     start_container
+    # initialize database with table and users
+    init_database
 ## sim or simulate adds $2 (or 20) rows to table
 elif [[ $COMMAND == "simulate" ]] || [[ $COMMAND == "sim" ]]
 then

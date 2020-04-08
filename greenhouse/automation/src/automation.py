@@ -9,9 +9,9 @@ import database
 import readsensor
 
 # automation constants
-WRITE_INTERVAL = 40 # time interval for writing to database (10 minutes)
-READ_INTERVAL = 10 # time interval for taking readings (10 minutes)
-OK_TEMPERATURES = [65, 80] # range of ok temperatures
+WRITE_INTERVAL = 600 # time interval for writing to database (10 minutes)
+READ_INTERVAL = 600 # time interval for taking readings (10 minutes)
+OK_TEMPERATURES = [70, 87] # range of ok temperatures
 SIMULATE_READINGS = False
 
 # database constants (to be replaced by config file)
