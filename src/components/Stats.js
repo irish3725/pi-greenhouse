@@ -65,7 +65,7 @@ class Stats extends React.Component {
   } 
 
   componentDidMount() {
-      fetch("http://localhost:5000/stats/1", {
+      fetch("http://192.168.1.43:5000/stats/1", {
         credentials: 'same-origin',
       })
       .then(res => res.json()) // sets res to a list of rows. (first request asks for 1 row)
