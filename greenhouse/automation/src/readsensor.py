@@ -24,7 +24,7 @@ def get_temperature_and_humidity(simulate=False):
   if humidity is not None and temperature is not None:
       # translate to ferenheit and round to 2 decimals
       temperature = round(((temperature * 9/5) + 32), 2)
-      return temperature,  humidity
+      return temperature, humidity
 
   # if no reading, return nothing
   return None, None
